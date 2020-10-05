@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.circularreveal.cardview.CircularRevealCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="24dp"
+    app:cardCornerRadius="12dp"
+    android:layout_margin="10dp"
+    app:cardBackgroundColor="#181818"
+    android:orientation="vertical"
+    app:rippleColor="@color/colorPrimary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="227dp"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/displayPicture"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@color/colorPrimary"/>
+
+            <TextView
+                android:id="@+id/nameFetch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/keepcalm"
+                android:text="Name"
+                android:textColor="#FDFDFD"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/rankFetch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/keepcalm"
+                android:text="Rank"
+                android:textColor="#f0f4c3"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/acceptanceA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/keepcalm"
+                android:text="Quests"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/acceptanceFetch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnAccept"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@color/colorPrimary"
+                    android:text="View Profile"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnDecline"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:text="Share Status"
+                    android:background="@color/cardview_shadow_end_color"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+</com.google.android.material.circularreveal.cardview.CircularRevealCardView>

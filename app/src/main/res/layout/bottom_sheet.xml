@@ -8,7 +8,7 @@
     android:background="@drawable/rounded_dialog"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
     app:behavior_hideable="false"
-    app:behavior_peekHeight="100dp"
+    app:behavior_peekHeight="50dp"
     android:elevation="50dp"
     >
 
@@ -30,8 +30,9 @@
             android:textColor="#fff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pull Up To View Today's Menu"
+            android:text="Pull Up For Quick Actions"
             android:fontFamily="@font/keepcalm"
+            android:visibility="gone"
             android:layout_marginTop="10dp"/>
 
 
@@ -105,6 +106,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="About"
+            android:fontFamily="@font/keepcalm"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="15dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_bug_report_24"
+            app:tint="@color/colorAccent" />
+
+        <TextView
+            android:textColor="#fff"
+            android:id="@+id/sheetAc4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Report Labs Problem"
             android:fontFamily="@font/keepcalm"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"/>
