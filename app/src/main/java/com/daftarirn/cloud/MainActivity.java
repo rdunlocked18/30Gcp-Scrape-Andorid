@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.graphics.Movie;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -36,13 +38,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
     private String url = "https://dscvit30daysgcp.herokuapp.com/";
 
     private RecyclerView mHomeRV;
     private List<QwikModel> profileList;
     private RecyclerView.Adapter adapter;
     private LinearLayoutManager linearLayoutManager;
-
+    private List<QwikModel> sortedPeopleList = new ArrayList<>();
 
     //viewB
     ActivityMainBinding activityMainBinding;
@@ -75,6 +78,26 @@ public class MainActivity extends AppCompatActivity {
                 refreshData();
             }
         });
+
+
+
+        activityMainBinding.searchBar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                sortList(profileList);
+            }
+        });
+
     }
 
 
@@ -123,5 +146,25 @@ public class MainActivity extends AppCompatActivity {
     public void  refreshData(){
         getData();
     }
+
+
+    private void sortList(List<QwikModel> list) {
+        sortedPeopleList.clear();
+        String searchName = activityMainBinding.searchBar.getText().toString();
+
+        Log.d(TAG, "sortList: " + searchName);
+
+        Log.d(TAG, "sortList: started");
+        for (QwikModel item : list) {
+            if (item.getName().contains(searchName) && !searchName.isEmpty()) {
+
+                sortedPeopleList.add(item);
+
+                Log.d(TAG, "sortList: "+item);
+            }
+
+        }
+    }
+
 
     }
