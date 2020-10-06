@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -56,14 +58,26 @@ public class MainActivity extends AppCompatActivity {
         adapter = new HomeQwikAdapter(getApplicationContext(),profileList);
         linearLayoutManager   = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+
         activityMainBinding.homeRecycle.setHasFixedSize(true);
         activityMainBinding.homeRecycle.setLayoutManager(linearLayoutManager);
         activityMainBinding.homeRecycle.setAdapter(adapter);
-
+        adapter.notifyDataSetChanged();
+        activityMainBinding.homeRecycle.scheduleLayoutAnimation();
 
         getData();
 
+
+        activityMainBinding.refreshFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                refreshData();
+            }
+        });
     }
+
+
 
     private void getData() {
 
@@ -81,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
                         QwikModel qwikModel = new QwikModel();
                         qwikModel.setName(jsonObject.getString("name"));
                         qwikModel.setDpUrl(jsonObject.getString("dp"));
+                        qwikModel.setQuests_status(jsonObject.getInt("quests_status"));
+                        qwikModel.setQuestsNames(jsonObject.getJSONArray("quests"));
+
+
                         profileList.add(qwikModel);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -99,6 +117,11 @@ public class MainActivity extends AppCompatActivity {
         });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(jsonArrayRequest);
+    }
+
+
+    public void  refreshData(){
+        getData();
     }
 
     }

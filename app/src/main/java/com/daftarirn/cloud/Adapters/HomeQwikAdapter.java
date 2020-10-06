@@ -57,6 +57,12 @@ public class HomeQwikAdapter  extends RecyclerView.Adapter<HomeQwikAdapter.QwikV
                 .placeholder(R.drawable.loadin)
                 .into(holder.displayP);
 
+        //set Quest total numbers
+        String questStatusCount = "Total Quests : "+qwikModel.getQuests_status();
+
+        holder.questsNames.setText(questStatusCount);
+
+        
 
 
 

@@ -1,5 +1,7 @@
 package com.daftarirn.cloud.Models;
 
+import org.json.JSONArray;
+
 public class QwikModel {
 
     String name;
@@ -8,7 +10,7 @@ public class QwikModel {
     String id;
     int quests_status;
     String dpUrl;
-    String questsNames;
+    JSONArray questsNames;
 
     public String getName() {
         return name;
@@ -58,11 +60,11 @@ public class QwikModel {
         this.dpUrl = dpUrl;
     }
 
-    public String getQuestsNames() {
+    public JSONArray getQuestsNames() {
         return questsNames;
     }
 
-    public void setQuestsNames(String questsNames) {
+    public void setQuestsNames(JSONArray questsNames) {
         this.questsNames = questsNames;
     }
 }

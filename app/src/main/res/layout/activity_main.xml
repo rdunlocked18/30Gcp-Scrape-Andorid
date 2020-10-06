@@ -35,14 +35,28 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
+            <com.mlsdev.animatedrv.AnimatedRecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
+                android:layout_marginBottom="50dp"
+                app:animationDuration="600"
+                app:layoutAnimation="@anim/layout_animation_fall_down"
                 android:id="@+id/homeRecycle"/>
 
         </LinearLayout>
 
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="60dp"
+            app:icon="@drawable/ic_baseline_refresh_24"
+            android:backgroundTint="@color/colorAccent"
+            app:rippleColor="@color/colorPrimary"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/refreshFab"
+            />
         <include layout="@layout/bottom_sheet" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
