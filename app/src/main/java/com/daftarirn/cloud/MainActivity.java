@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(view);
 
         profileList = new ArrayList<>();
-        adapter = new HomeQwikAdapter(getApplicationContext(),profileList);
-        linearLayoutManager   = new LinearLayoutManager(this);
+        adapter = new HomeQwikAdapter(getApplicationContext(), profileList);
+        linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
 
@@ -80,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         activityMainBinding.searchBar.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -94,12 +93,18 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                sortList(profileList);
+
+
+                try {
+                    sortList(profileList);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             }
         });
 
     }
-
 
 
     private void getData() {
@@ -143,12 +148,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void  refreshData(){
+    public void refreshData() {
         getData();
     }
 
 
-    private void sortList(List<QwikModel> list) {
+    private void sortList(List<QwikModel> list) throws Exception {
         sortedPeopleList.clear();
         String searchName = activityMainBinding.searchBar.getText().toString();
 
@@ -160,11 +165,19 @@ public class MainActivity extends AppCompatActivity {
 
                 sortedPeopleList.add(item);
 
-                Log.d(TAG, "sortList: "+item);
+                Log.d(TAG, "sortList: " + item);
             }
 
+
+
+        }
+
+        if(!sortedPeopleList.isEmpty()){
+            activityMainBinding.homeRecycle.notifyDataSetChanged();
+        }else {
+            Toast.makeText(this, "Not Found!", Toast.LENGTH_SHORT).show();
         }
     }
 
 
-    }
+}

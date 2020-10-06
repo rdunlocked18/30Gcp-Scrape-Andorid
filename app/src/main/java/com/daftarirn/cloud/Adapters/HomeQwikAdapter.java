@@ -24,7 +24,7 @@ public class HomeQwikAdapter  extends RecyclerView.Adapter<HomeQwikAdapter.QwikV
 
     public static Context context;
     List<QwikModel> qwikModelList;
-
+    String urltoProfile;
 
     @NonNull
     @Override
@@ -61,8 +61,8 @@ public class HomeQwikAdapter  extends RecyclerView.Adapter<HomeQwikAdapter.QwikV
         String questStatusCount = "Total Quests : "+qwikModel.getQuests_status();
 
         holder.questsNames.setText(questStatusCount);
+        urltoProfile = qwikModel.getQwiklabs_id();
 
-        
 
 
 
@@ -82,7 +82,7 @@ public class HomeQwikAdapter  extends RecyclerView.Adapter<HomeQwikAdapter.QwikV
         public QwikViewHolder(@NonNull View itemView) {
             super(itemView);
              nameFetch = itemView.findViewById(R.id.nameFetch);
-                questsNames = itemView.findViewById(R.id.questsNames);
+             questsNames = itemView.findViewById(R.id.questsNames);
              viewProfile = itemView.findViewById(R.id.btnViewProfile);
              shareStatus = itemView.findViewById(R.id.btnShareStat);
              displayP = itemView.findViewById(R.id.displayPicture);
