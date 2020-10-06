@@ -96,10 +96,11 @@ public class MainActivity extends AppCompatActivity {
 
 
                 try {
-                    sortList(profileList);
+                    sortList(sortedPeopleList);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
 
             }
         });
@@ -161,19 +162,18 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(TAG, "sortList: started");
         for (QwikModel item : list) {
-            if (item.getName().contains(searchName) && !searchName.isEmpty()) {
+            if (item.getName().equals(searchName) && !searchName.isEmpty()) {
 
                 sortedPeopleList.add(item);
 
                 Log.d(TAG, "sortList: " + item);
             }
 
-
-
         }
 
         if(!sortedPeopleList.isEmpty()){
-            activityMainBinding.homeRecycle.notifyDataSetChanged();
+            adapter = new HomeQwikAdapter(getApplicationContext(), sortedPeopleList);
+            activityMainBinding.homeRecycle.setAdapter(this.adapter);
         }else {
             Toast.makeText(this, "Not Found!", Toast.LENGTH_SHORT).show();
         }
