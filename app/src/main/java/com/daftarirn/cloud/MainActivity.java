@@ -39,7 +39,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-    private String url = "https://dscvit30daysgcp.herokuapp.com/";
+    private String url = "http://iotrest.herokuapp.com/api/devicefetcher/";
 
     private RecyclerView mHomeRV;
     private List<QwikModel> profileList;
@@ -80,31 +80,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        activityMainBinding.searchBar.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-
-                try {
-                    sortList(sortedPeopleList);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-
-            }
-        });
-
     }
 
 
@@ -122,10 +97,10 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject jsonObject = response.getJSONObject(i);
 
                         QwikModel qwikModel = new QwikModel();
-                        qwikModel.setName(jsonObject.getString("name"));
-                        qwikModel.setDpUrl(jsonObject.getString("dp"));
-                        qwikModel.setQuests_status(jsonObject.getInt("quests_status"));
-                        qwikModel.setQuestsNames(jsonObject.getJSONArray("quests"));
+                        qwikModel.setLoginTime(jsonObject.getString("loginTime"));
+                        qwikModel.setMacId(jsonObject.getString("macId"));
+                        qwikModel.setAuthId(jsonObject.getString("authId"));
+                        qwikModel.setDeviceValid(jsonObject.getBoolean("deviceValid"));
 
 
                         profileList.add(qwikModel);
@@ -154,30 +129,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void sortList(List<QwikModel> list) throws Exception {
-        sortedPeopleList.clear();
-        String searchName = activityMainBinding.searchBar.getText().toString();
+//    private void sortList(List<QwikModel> list) throws Exception {
+//        sortedPeopleList.clear();
+//        String searchName = activityMainBinding.searchBar.getText().toString();
+//
+//        Log.d(TAG, "sortList: " + searchName);
+//
+//        Log.d(TAG, "sortList: started");
+//        for (QwikModel item : list) {
+//            if (item.getName().equals(searchName) && !searchName.isEmpty()) {
+//
+//                sortedPeopleList.add(item);
+//
+//                Log.d(TAG, "sortList: " + item);
+//            }
+//
+//        }
 
-        Log.d(TAG, "sortList: " + searchName);
-
-        Log.d(TAG, "sortList: started");
-        for (QwikModel item : list) {
-            if (item.getName().equals(searchName) && !searchName.isEmpty()) {
-
-                sortedPeopleList.add(item);
-
-                Log.d(TAG, "sortList: " + item);
-            }
-
-        }
-
-        if(!sortedPeopleList.isEmpty()){
-            adapter = new HomeQwikAdapter(getApplicationContext(), sortedPeopleList);
-            activityMainBinding.homeRecycle.setAdapter(this.adapter);
-        }else {
-            Toast.makeText(this, "Not Found!", Toast.LENGTH_SHORT).show();
-        }
-    }
+//        if(!sortedPeopleList.isEmpty()){
+//            adapter = new HomeQwikAdapter(getApplicationContext(), sortedPeopleList);
+//            activityMainBinding.homeRecycle.setAdapter(this.adapter);
+//        }else {
+//            Toast.makeText(this, "Not Found!", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
 
 }

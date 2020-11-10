@@ -47,21 +47,16 @@ public class HomeQwikAdapter  extends RecyclerView.Adapter<HomeQwikAdapter.QwikV
 
         //all setters and getters usage
         QwikModel qwikModel = qwikModelList.get(position);
-        holder.nameFetch.setText(qwikModel.getName());
+        holder.nameFetch.setText("Login Time : "+qwikModel.getLoginTime());
 
 
-        //set dp
-        String dpURl = qwikModel.getDpUrl();
-        Glide.with(context).load(Uri.parse(dpURl))
-                .error(R.drawable.ic_launcher_background)
-                .placeholder(R.drawable.loadin)
-                .into(holder.displayP);
-
-        //set Quest total numbers
-        String questStatusCount = "Total Quests : "+qwikModel.getQuests_status();
+       String questStatusCount = "MacID : "+qwikModel.getMacId();
 
         holder.questsNames.setText(questStatusCount);
-        urltoProfile = qwikModel.getQwiklabs_id();
+        boolean isDeviceValid  = qwikModel.getDeviceValid();
+        if(!isDeviceValid){
+            holder.displayP.setColorFilter(context.getResources().getColor(R.color.redInvalid));
+        }
 
 
 
@@ -73,47 +68,23 @@ public class HomeQwikAdapter  extends RecyclerView.Adapter<HomeQwikAdapter.QwikV
         return qwikModelList.size();
     }
 
-    public class QwikViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class QwikViewHolder extends RecyclerView.ViewHolder{
         public TextView nameFetch,questsNames;
         public CircleImageView displayP;
-        Button viewProfile,shareStatus;
+
 
 
         public QwikViewHolder(@NonNull View itemView) {
             super(itemView);
              nameFetch = itemView.findViewById(R.id.nameFetch);
              questsNames = itemView.findViewById(R.id.questsNames);
-             viewProfile = itemView.findViewById(R.id.btnViewProfile);
-             shareStatus = itemView.findViewById(R.id.btnShareStat);
              displayP = itemView.findViewById(R.id.displayPicture);
-             viewProfile.setOnClickListener(this);
-             shareStatus.setOnClickListener(this);
-             questsNames.setOnClickListener(this);
 
 
 
 
         }
 
-        @Override
-        public void onClick(View view) {
 
-
-            switch (view.getId()){
-                case  R.id.btnViewProfile :
-                    Toast.makeText(itemView.getContext(), "hello", Toast.LENGTH_SHORT).show();
-                    break;
-                case R.id.btnShareStat:
-                    Toast.makeText(itemView.getContext(), "melllo", Toast.LENGTH_SHORT).show();
-                    break;
-
-                case R.id.questsNames:
-                    Toast.makeText(itemView.getContext(), "Quests", Toast.LENGTH_SHORT).show();
-                    break;
-            }
-
-
-
-        }
     }
 }

@@ -4,36 +4,38 @@ import org.json.JSONArray;
 
 public class QwikModel {
 
-    String name;
-    String rank;
-    String qwiklabs_id;
+    String loginTime;
+    Boolean deviceValid;
     String id;
-    int quests_status;
-    String dpUrl;
-    JSONArray questsNames;
+    String macId;
+    String authId;
 
-    public String getName() {
-        return name;
+    public QwikModel() {
+
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public QwikModel(String loginTime, Boolean deviceValid, String id, String macId, String authId) {
+        this.loginTime = loginTime;
+        this.deviceValid = deviceValid;
+        this.id = id;
+        this.macId = macId;
+        this.authId = authId;
     }
 
-    public String getRank() {
-        return rank;
+    public String getLoginTime() {
+        return loginTime;
     }
 
-    public void setRank(String rank) {
-        this.rank = rank;
+    public void setLoginTime(String loginTime) {
+        this.loginTime = loginTime;
     }
 
-    public String getQwiklabs_id() {
-        return qwiklabs_id;
+    public Boolean getDeviceValid() {
+        return deviceValid;
     }
 
-    public void setQwiklabs_id(String qwiklabs_id) {
-        this.qwiklabs_id = qwiklabs_id;
+    public void setDeviceValid(Boolean deviceValid) {
+        this.deviceValid = deviceValid;
     }
 
     public String getId() {
@@ -44,27 +46,19 @@ public class QwikModel {
         this.id = id;
     }
 
-    public int getQuests_status() {
-        return quests_status;
+    public String getMacId() {
+        return macId;
     }
 
-    public void setQuests_status(int quests_status) {
-        this.quests_status = quests_status;
+    public void setMacId(String macId) {
+        this.macId = macId;
     }
 
-    public String getDpUrl() {
-        return dpUrl;
+    public String getAuthId() {
+        return authId;
     }
 
-    public void setDpUrl(String dpUrl) {
-        this.dpUrl = dpUrl;
-    }
-
-    public JSONArray getQuestsNames() {
-        return questsNames;
-    }
-
-    public void setQuestsNames(JSONArray questsNames) {
-        this.questsNames = questsNames;
+    public void setAuthId(String authId) {
+        this.authId = authId;
     }
 }
