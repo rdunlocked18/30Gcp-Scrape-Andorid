@@ -80,7 +80,7 @@
             android:id="@+id/foodSheetGet2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Support"
+            android:text="Support &amp; New Signup"
             android:fontFamily="@font/keepcalm"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"/>
@@ -117,6 +117,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+
         android:layout_margin="15dp">
 
         <ImageView
@@ -130,7 +131,7 @@
             android:id="@+id/sheetAc4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Report Labs Problem"
+            android:text="Report User"
             android:fontFamily="@font/keepcalm"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"/>
